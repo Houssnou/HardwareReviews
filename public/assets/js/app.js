@@ -74,10 +74,40 @@ $(document).ready(() => {
       $colDescText.text(review.description)
         .appendTo($colDesc);
 
-      $bodyRow.append($colImage, $colDesc)
-      //append firstRow, linkRow, bodyRow all together to divCollape
-      $cardBody.append($firstRow, $linkRow, $lineBreak, $bodyRow).appendTo($divCollapse);
+      $bodyRow.append($colImage, $colDesc);
 
+
+      //let build the content of the comment section if reviews.comments exist
+      if (review.comments.length > 0) {
+        //create new div at the bottom to display the comments
+        const $divCommentContent = $("<div class='border border-dark'>");
+
+        const $listGroup = $("<div class='list-group table-striped'>");
+        //build a list item for each comment
+        review.comments.forEach(comment => {
+          //build the 
+          const $rowComment = $("<div class='list-group-item list-group-item-action flex-column align-items-start'>");
+          const $rowInfos = $("<div class='row d-flex w-100 justify-content-start text-muted'>");
+          const $colUsername = $("<div class='col-3' style='font-weight: bold'>").text(`Posted by: ${comment.username}`).appendTo($rowInfos);
+          const $colCreatedAt = $("<div class='col-9' style='font-weight: bold'>").text(`On: ${moment(comment.createdAt).format("dddd, MMMM Do YYYY, h:mm:ss a")}`).appendTo($rowInfos);
+          const $rowBody = $("<div class='row d-flex w-100 justify-content-between text-muted border-0'>");
+          const $ptext = $("<div class='col-12'>").text(comment.body).appendTo($rowBody);
+
+          //
+          $rowComment.append($rowInfos, $rowBody)
+          //
+          $rowComment.appendTo($listGroup);
+        });
+        //then append to 
+        $listGroup.appendTo($divCommentContent);
+        //append firstRow, linkRow, bodyRow all together to divCollape
+        $cardBody.append($firstRow, $linkRow, $lineBreak, $bodyRow, $lineBreak, $listGroup).appendTo($divCollapse);
+
+      } else {
+        //then display the reviews infos w/o building the comment section
+        //append firstRow, linkRow, bodyRow all together to divCollape
+        $cardBody.append($firstRow, $linkRow, $lineBreak, $bodyRow).appendTo($divCollapse);
+      };
       //build the card content
       $card.append($cardheader, $divCollapse).appendTo("#accordion");
     });
@@ -113,7 +143,7 @@ $(document).ready(() => {
         method: "POST",
         data: newComment
       }).then(result => {
-        console.log(result);
+        //console.log(result);
 
         //empty the inputs fieds and get rid of the modal
         $("#username-input").val("");
@@ -132,7 +162,18 @@ $(document).ready(() => {
       url: "/api/reviews"
     }).then(function (dbReviews) {
       console.log(dbReviews);
-
     });
+  });
+
+  //event listener for a click on clear all tables
+    $("#clear").on("click", () => {
+    console.log("Dropping all tables");
+    /* $.ajax({
+      url: "/api/reviews",
+      method: "DELETE"
+    }).then(result => {
+      //reload page
+      location.reload();
+    }); */
   });
 });

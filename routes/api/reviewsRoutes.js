@@ -5,7 +5,8 @@ const reviewsController = require("../../controllers/reviewsControllers");
 router
   .route("/")
   .get(reviewsController.getAllReviewsPopulated)
-  .post(reviewsController.scrapeReviews);
+  .post(reviewsController.scrapeReviews)
+  .delete(reviewsController.clearAll);
 
 
 /* later on we want to be able to do more actions on reviews

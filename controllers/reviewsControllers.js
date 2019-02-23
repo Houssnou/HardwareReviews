@@ -108,5 +108,16 @@ module.exports = {
           return res.json(err);
         });
     });
+  },
+  //delete all reviews and comments
+  clearAll: (req, res) => {
+    // Grab every document in the Reviews collection
+    /* db.dropCollection("Review", (err, result) => {
+      if (err) {
+        console.log(err);
+        return res.json(err);
+      }
+      req.json(result);
+    }); */
   }
 }
