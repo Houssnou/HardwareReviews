@@ -4,9 +4,7 @@ let cnx;
 
 // Connect to the Mongo DB
 if (process.env.MONGODB_URI){
-  cnx = mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true
-});
+  cnx = mongoose.connect(process.env.MONGODB_URI);
 }else{
 cnx = mongoose.connect("mongodb://localhost/hardware_reviews_db", {
   useNewUrlParser: true
