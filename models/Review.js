@@ -23,7 +23,7 @@ var ReviewSchema = new Schema({
     required: true,
   },
   // `description` is required and of type String
-  desctiption: {
+  description: {
     type: String,
     required: true
   },

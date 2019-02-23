@@ -4,7 +4,7 @@ const reviewsController = require("../../controllers/reviewsControllers");
 // methods for /api/reviews (GET, POST,PUT and DELETE)
 router
   .route("/")
-  .get(reviewsController.getAllReviews)
+  .get(reviewsController.getAllReviewsPopulated)
   .post(reviewsController.scrapeReviews);
 
 

@@ -1,4 +1,5 @@
-const db = require("../config/cnx");
+const cnx = require("../config/cnx");
+var db = require("../models");
 // Our scraping tools
 var axios = require("axios");
 var cheerio = require("cheerio");
@@ -93,16 +94,19 @@ module.exports = {
         });
       });
       //console.log(results);
-      console.log("Data scraped! Inserting in DB...");
       //save results into mongoDB 
-      db.Review.insert(results, (err, result) => {
-        if (err) {
+      db.Review.create(results)
+        .then((dbReviews) => {
+          // View the added result in the console
+          console.log("Data scraped! Inserting in DB...");
+          //console.log(dbReviews);
+          res.json(dbReviews);
+        })
+        .catch((err) => {
+          // If an error occurred, log it
           console.log(err);
           return res.json(err);
-        }
-        res.json(result);
-        console.log("Data scraped! Inserting in DB...");
-      });
+        });
     });
   }
 }
