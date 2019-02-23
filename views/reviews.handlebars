@@ -17,13 +17,34 @@
 {{!-- burger logo --}}
 
 <div class="container">
-  <div class="jumbotron my-4" id="maindisplay">
+  <div class="jumbotron my-2">
     {{!-- logo here --}}
-
+    <p class="text-center">Scrape <button type="button" class="btn btn-secondary" id="scrape-button">Guru3d </button>
+    </p>
+    <p class="text-center">Scrape by page...Coming soon</p>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
 <div class="container">
-  <div class="jumbotron my-4" id="maindisplay">
+  <div class="jumbotron my-4">
     {{!-- Accordion here --}}
     <div class="container">
       <div class="accordion" id="accordion">
@@ -42,10 +63,23 @@
 
           <div id="review1" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
-              <h1 id="author">By Hilbert Hagedoorn on: 02/21/2019 03:00 PM </h1>
-              <h2 id="link">
-                https://www.guru3d.com/news-story/review-corsair-dominator-platinum-rgb-ddr4-memory-(32gb-3600mhz).html
-              </h2>
+              <div class="row">
+                <div class="col-10">
+                  <h2 id="author">By Hilbert Hagedoorn on: 02/21/2019 03:00 PM </h2>
+                </div>
+                <div class="col-2">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#comment-modal">
+                    Comments <span class="badge badge-light" id="num-comments">4</span>
+                  </button>
+                </div>
+              </div>
+
+              <h6>
+                <a id="link"
+                  href="https://www.guru3d.com/news-story/review-corsair-dominator-platinum-rgb-ddr4-memory-(32gb-3600mhz).html">
+                  https://www.guru3d.com/news-story/review-corsair-dominator-platinum-rgb-ddr4-memory-(32gb-3600mhz).html
+                </a></h6>
+              </br>
               <div class="row">
                 <div class="col-4">
                   <span id="img"> <img src="https://www.guru3d.com/news_teaserimage/13387"
@@ -58,9 +92,6 @@
                     configurations.Read our review right here.  </span>
                 </div>
               </div>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-              moon
-              officia aute, non cupidatat skateboard dolor brunch.
             </div>
           </div>
         </div>
@@ -87,6 +118,8 @@
           <div class="form-group col">
             <input class="form-control" id="userName-input" type="text" placeholder="Enter your userName">
           </div>
+        </div>
+        <div class="form-row">
           <div class="form-group col">
             <textarea class="form-control" id="comment-input" cols="30" rows="10"
               placeholder="Your comment here"></textarea>
@@ -96,7 +129,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-outline-primary" id="save-comment" type="submit">Order</button>
+        <button type="button" class="btn btn-outline-primary" id="save-comment" type="submit">Submit</button>
       </div>
     </div>
   </div>
@@ -111,4 +144,4 @@
         class="btn btn-outline-success" id="reset">Reset Table</button>
   </div>
 </footer>
-<script src="assets/js/app.js"></script>
+<script src="assets/js/app"></script>

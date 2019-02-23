@@ -51,6 +51,7 @@ module.exports = {
   //Important
   //scrape and populates the reviews tables
   scrapeReviews: (req, res) => {
+    console.log("Scraping data...");
     // First, we grab the body of the html with axios
     axios.get("https://www.guru3d.com/").then(function (response) {
       // Then, we load that into cheerio and save it to $ for a shorthand selector
@@ -92,7 +93,7 @@ module.exports = {
         });
       });
       //console.log(results);
-
+      console.log("Data scraped! Inserting in DB...");
       //save results into mongoDB 
       db.Review.insert(results, (err, result) => {
         if (err) {
@@ -100,6 +101,7 @@ module.exports = {
           return res.json(err);
         }
         res.json(result);
+        console.log("Data scraped! Inserting in DB...");
       });
     });
   }
