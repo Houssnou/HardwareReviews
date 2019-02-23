@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 let cnx;
 
 // Connect to the Mongo DB
-cnx = mongoose.connect("mongodb://localhost/hardware_reviews_db", {
+cnx = mongoose.connect("process.env.MONGODB_URI"||"mongodb://localhost/hardware_reviews_db", {
   useNewUrlParser: true
 });
 
