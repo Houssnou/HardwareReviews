@@ -4,7 +4,7 @@ let cnx;
 
 // Connect to the Mongo DB
 if (process.env.MONGODB_URI){
-  cnx = mongoose.connect("process.env.MONGODB_URI", {
+  cnx = mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true
 });
 }else{
