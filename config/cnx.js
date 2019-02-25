@@ -12,6 +12,6 @@ cnx = mongoose.connect("mongodb://localhost/hardware_reviews_db", {
   useNewUrlParser: true
 });
 }
-cnx.connection;
+
 // Export the connection so it's available in other parts of the app
 module.exports = cnx;

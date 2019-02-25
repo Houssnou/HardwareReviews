@@ -1,5 +1,6 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
+const cnx=require("./config/cnx");
 
 const app = express();
 const logger = require("morgan");
@@ -7,7 +8,11 @@ const logger = require("morgan");
 // import routes
 const routes = require("./routes");
 
-var PORT = 3000;
+//connect to the DB
+
+cnx.connection;
+
+var PORT = process.env.PORT || 3000;
 
 // Set Handlebars as the default templating engine.
 app.engine("handlebars", exphbs({

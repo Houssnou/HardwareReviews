@@ -1,4 +1,3 @@
-const cnx = require("../config/cnx");
 var db = require("../models");
 
 module.exports = {

@@ -1,4 +1,3 @@
-const cnx = require("../config/cnx");
 var db = require("../models");
 // Our scraping tools
 var axios = require("axios");
