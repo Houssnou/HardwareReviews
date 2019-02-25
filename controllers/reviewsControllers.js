@@ -111,12 +111,16 @@ module.exports = {
   //delete all reviews and comments
   clearAll: (req, res) => {
     // Grab every document in the Reviews collection
-    /* db.dropCollection("Review", (err, result) => {
-      if (err) {
-        console.log(err);
-        return res.json(err);
-      }
-      req.json(result);
-    }); */
+    db.Review
+    .deleteMany({})
+      .then(function (result) {
+      // If we were able to successfully delete all reviews send the result to the client
+      res.json(result);
+    })
+    .catch(function (err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
+    //.remove({ name: 'Eddard Stark' }, function (err) {});
   }
 }
